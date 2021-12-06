@@ -1,5 +1,5 @@
 from typing import BinaryIO
-import numpy as np
+#import numpy as np
 
 # Ausgabefunktionen
 def print_bin(num):
@@ -10,7 +10,7 @@ def print_hex(num):
 
 def print_bin_array(bin_array):
     print('[', end = '')
-    for i in range(0,len(bin_array)):  
+    for i in range(0,len(bin_array)):
         print(format(bin_array[i], '#06b')[2:], end = '')
         if i < len(bin_array) - 1:
             print(', ', end = '')
@@ -18,7 +18,7 @@ def print_bin_array(bin_array):
 
 def print_hex_array(bin_array):
     print('[   ', end = '')
-    for i in range(0,len(bin_array)):  
+    for i in range(0,len(bin_array)):
         print(hex(bin_array[i])[2:], end = '')
         if i < len(bin_array) - 1:
             print(',    ', end = '')
@@ -30,9 +30,19 @@ m = 4
 N = 4
 
 # S-Box
-def pi_s(input):
-    p = [14,4,13,1,2,15,11,8,3,10,6,12,5,9,0,7]
-    return p[input]
+S_Box = [14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7]
+def pi_s(s_box, ur):
+    """
+    Packet substitution operation
+
+    """
+    vr = 0
+    for i in range(4):
+        uri = ur % (2 ** 4)
+        vri = s_box[uri]
+        vr = vr + (vri << (4 * i))
+        ur = ur >> 4
+    return vr
 
 # Permutation
 def pi_p(input):
@@ -51,4 +61,3 @@ K5 = int(format(K, '#34b')[18:18+16],2)
 print_bin_array([K1,K2,K3,K4,K5])
 
 x = int('0010011010110111', 2)
-
