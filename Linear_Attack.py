@@ -1,35 +1,21 @@
 import Basic_Spn as spn
 
-def pi_s_inv(s_box, vr, l=4, m=4):
+def pi_s_inv(s_box, input, l=4, m=4):
     """
-    Inverse packet substitution operation
+    Applies inverted S-Box to input
     Param s_box: S-Box parameter
-    Param vr: Input Bit String, 2^l Bits
-    Return: Output Bit String, 2^l Bits
+    Param input: Input bit string, l*m bits
+    Param l: Bit length per block
+    Param m: Block count
+    Return: Output bit string, l*m bits
     """
-    ur = 0
+    output = 0
     for i in range(m):
-        vri = vr % (2 ** l)
-        uri = s_box.index(vri)
-        ur = ur + (uri << (l * i))
-        vr = vr >> l
-    return ur
-
-def print_hex(x, l=4, m=4):
-    out = ''
-    for i in range(m):
-        xi = x % (2 ** l)
-        out = (l-1)*' ' + hex(xi)[2:] + ' ' + out
-        x = x >> l
-    print('hex', out)
-
-def print_bin(x, l=4, m=4):
-    out = ''
-    for i in range(m):
-        xi = x % (2 ** l)
-        out = format(xi,f'0{2 + l}b')[2:] + ' ' + out
-        x = x >> l
-    print('bin', out)
+        input_i = input % (2 ** l)
+        output_i = s_box.index(input_i)
+        output = output + (output_i << (l * i))
+        input = input >> l
+    return output
 
 def linear_attack(T_set, pi_s_inv):
     T = len(T_set)
@@ -68,7 +54,7 @@ def linear_attack(T_set, pi_s_inv):
                 MAX = Count[L1][L2]
                 maxkey = (L1,L2)
     
-    # print Count Table
+    # print count table in console
     print('  ', '|', end= ' ')
     for h in range(len(Count[0])):
         print(format(h,'4X'), end= ' ')
