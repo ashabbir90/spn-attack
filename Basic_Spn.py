@@ -4,10 +4,8 @@ S_Box = [14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7]
 #Parameters of P box
 P_Box = [1, 5, 9, 13, 2, 6, 10, 14, 3, 7, 11, 15, 4, 8, 12, 16]
 
-
 def gen_K_list(K):
     """
-    Secret key arrangement algorithm, which generates five 16-bit sub-keys from a 32-bit secret key
     Param K: 32-bit secret key
     Return: [k1, k2, k3, k4, k5], five 16-bit subkeys
     """
@@ -18,12 +16,10 @@ def gen_K_list(K):
         K = K >> 4
     return Ks
 
-
 def pi_s(s_box, ur):
     """
-    Packet substitution operation
-    Param s_box:S box parameter
-    Paramur: Input Bit String, 16 Bits
+    Substitution operation
+    Param: Input Bit String, 16 Bits
     Return: Output Bit String, 16 Bits
     """
     vr = 0
@@ -34,11 +30,9 @@ def pi_s(s_box, ur):
         ur = ur >> 4
     return vr
 
-
 def pi_p(p_box, vr):
     """
-    Single bit permutation operation
-    Param p_box: P-box parameter
+    Permutation operation
     Param vr: input bit string, 16 bits
     Return: Output Bit String, 16 Bits
     """
@@ -49,13 +43,8 @@ def pi_p(p_box, vr):
         wr = wr + (vri << (16 - p_box[i]))
     return wr
 
-
-
-
-
 def do_SPN(x, s_box, p_box, Ks):
     """
-
     Param x: 16 bit input
     Param s_box: S box parameter
     Param p_box: P-box parameter
@@ -73,7 +62,6 @@ def do_SPN(x, s_box, p_box, Ks):
     y = vr ^ Ks[4]
     return y
 
-
 def encrypt(K, x):
     """
     Encryption of 16-bit plaintext x based on secret key K
@@ -84,8 +72,6 @@ def encrypt(K, x):
     Ks = gen_K_list(K)
     return do_SPN(x, S_Box, P_Box, Ks)
 
-
-
 if __name__ == '__main__':
     x = 0b0010011010110111
     K = 0b00111010100101001101011000111111
@@ -93,3 +79,6 @@ if __name__ == '__main__':
     print ('encrypted ciphertext:', format (encrypt (K, x),'016b'))
 
 
+# Output
+# initial plaintext: 0010011010110111
+# encrypted ciphertext: 1011110011010110
