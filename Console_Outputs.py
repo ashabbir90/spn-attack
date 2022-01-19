@@ -31,7 +31,7 @@ def bin_str(input, l=4, m=4):
     return output
 
 def print_count_table(Count, maxkey):
-    print('Count table:')
+    print('\nCount table:')
     print('  ', '|', end= ' ')
     for h in range(len(Count[0])):
         print(format(h,'4X'), end= ' ')
@@ -52,8 +52,9 @@ def print_count_table(Count, maxkey):
     print('bin ' + bin_str(maxkey[0],4,1) + bin_str(maxkey[1],4,1))
 
 def print_linear_approximation_table(Approx):
-    print('Linear approximation table:')
-    print('  ', '|', end= ' ')
+    print('\nLinear approximation table:')
+    print('   |' + '       '*8 + 'b')
+    print(' a ' + '|', end= ' ')
     for h in range(len(Approx[0])):
         print(format(h,'6X'), end= ' ')
     print()
@@ -69,8 +70,22 @@ def print_linear_approximation_table(Approx):
                 print(format(Approx[i][j],' .3f'), end= ' ')
         print()
 
+def print_difference_distribution_table(N_D_values):
+    print('\nDifference distribution table:')
+    print('   |' + '   '*8 + 'b\'')
+    print(' a\'' + '|', end= ' ')
+    for h in range(len(N_D_values[0])):
+        print(format(h,'2X'), end= ' ')
+    print()
+    print('----' + '---'*16)
+    for i in range(len(N_D_values)):
+        print(format(i,'2X'), '|', end= ' ')
+        for j in range(len(N_D_values[i])):
+            print(format(N_D_values[i][j],'2d'), end= ' ')
+        print()
+
 def print_s_box(s_box):
-    print('S-Box:')
+    print('\nS-Box:')
     s_box_in_str = 'input  = '
     s_box_out_str = 'output = '
     for i in s_box:
