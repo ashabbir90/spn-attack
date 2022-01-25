@@ -1,7 +1,11 @@
+import re
+import numpy as np
 import Basic_Spn as spn
 import Console_Outputs as cout
 import random
 import time
+
+Attacks = [1] # [1,2,3,4]
 
 def pi_s_inv(s_box, input, l=4, m=4):
     """
@@ -21,9 +25,7 @@ def pi_s_inv(s_box, input, l=4, m=4):
     return output
 
 def linear_approximation(s_box, l=4):
-    Approx = [0] * 16
-    for i in range(16):
-        Approx[i] = [0] * 16
+    Approx = np.zeros((16,16))
     # N_L(a,b)
     for a in range(16):
         for b in range(16):
@@ -45,10 +47,7 @@ def linear_approximation(s_box, l=4):
 
 def linear_attack_1(T_set, pi_s_inv):
     T = len(T_set)
-
-    Count = [0] * 16
-    for i in range(16):
-        Count[i] = [0] * 16
+    Count = np.zeros((16,16))
     
     v4 = 0
     u4 = 0
@@ -84,9 +83,7 @@ def linear_attack_1(T_set, pi_s_inv):
 
 def linear_attack_2(T_set, pi_s_inv):
     T = len(T_set)
-    Count = [0] * 16
-    for i in range(16):
-        Count[i] = [0] * 16
+    Count = np.zeros((16,16))
     
     v4 = 0
     u4 = 0
@@ -123,14 +120,7 @@ def linear_attack_2(T_set, pi_s_inv):
 
 def linear_attack_3(T_set, pi_s_inv):
     T = len(T_set)
-    Count = [0] * 16
-    
-    for i in range(16):
-        Count[i] = [0] * 16
-    
-    for i in range(16):
-        for j in range(16):
-            Count[i][j] = [0] * 16
+    Count = np.zeros((16,16,16))
     
     v4 = 0
     u4 = 0
@@ -171,14 +161,7 @@ def linear_attack_3(T_set, pi_s_inv):
 
 def linear_attack_4(T_set, pi_s_inv):
     T = len(T_set)
-    Count = [0] * 16
-    
-    for i in range(16):
-        Count[i] = [0] * 16
-    
-    for i in range(16):
-        for j in range(16):
-            Count[i][j] = [0] * 16
+    Count = np.zeros((16,16,16))
     
     v4 = 0
     u4 = 0
@@ -219,48 +202,6 @@ def linear_attack_4(T_set, pi_s_inv):
     
     return Count, maxkey
 
-def linear_attack_5(T_set, pi_s_inv, xs, ):
-    T = len(T_set)
-
-    Count = [0] * 16
-    for i in range(16):
-        Count[i] = [0] * 16
-    
-    v4 = 0
-    u4 = 0
-    z = 0
-
-    for (x,y) in T_set:
-        for L1 in range(16):
-            for L2 in range(16):
-                v4 = y ^ 0b_1101_0110_0011_1111
-                u4 = pi_s_inv(spn.S_Box,v4)
-                v3 = spn.pi_p(spn.P_Box, u4)
-                v4 =             L1 ^ int(format(y, '016b')[4:8],  2) # v4_<2>
-                v4 = (v4 << 8) + L2 ^ int(format(y, '016b')[12:16],2) # v4_<4>
-                u4 =             pi_s_inv(spn.S_Box,int(format(v4,'016b')[4:8],  2),4,1) # u4_<2>
-                u4 = (u4 << 8) + pi_s_inv(spn.S_Box,int(format(v4,'016b')[12:16],2),4,1) # u4_<4>
-                z = ( int(format(x, '016b')[5  - 1],2) # x_5
-                    ^ int(format(x, '016b')[7  - 1],2) # x_7
-                    ^ int(format(x, '016b')[8  - 1],2) # x_8
-                    ^ int(format(u4,'016b')[6  - 1],2) # u4_6
-                    ^ int(format(u4,'016b')[8  - 1],2) # u4_8
-                    ^ int(format(u4,'016b')[14 - 1],2) # u4_14
-                    ^ int(format(u4,'016b')[16 - 1],2) # u4_16
-                    )
-                if z == 0:
-                    Count[L1][L2] += 1
-    
-    MAX = -1
-    maxkey = (0,0)
-    for L1 in range(16):
-        for L2 in range(16):
-            Count[L1][L2] = abs(Count[L1][L2] - T/2)
-            if Count[L1][L2] > MAX:
-                MAX = Count[L1][L2]
-                maxkey = (L1,L2)
-    return Count, maxkey
-
 if __name__ == '__main__':
     cout.print_s_box(spn.S_Box)
 
@@ -272,7 +213,7 @@ if __name__ == '__main__':
 
     T_set = [(x, spn.encrypt(K, x)) for x in random.sample(range(0, 2**16-1), 20_000)]
 
-    for i in [1]:
+    for i in Attacks:
         print('=== Starting linear_attack_' + str(i), '==========================')
         start_time = time.time()
         if i == 1:

@@ -1,4 +1,5 @@
 from colorama import Fore, Back, Style
+import Differential_Attack as da
 
 def hex_str(input, l=4, m=4):
     """
@@ -35,8 +36,7 @@ def print_count_table(Count, maxkey):
     print('  ', '|', end= ' ')
     for h in range(len(Count[0])):
         print(format(h,'4X'), end= ' ')
-    print()
-    print('----' + '-----'*16)
+    print('\n----' + '-----'*16)
     for i in range(len(Count)):
         print(format(i,'2X'), '|', end= ' ')
         for j in range(len(Count[i])):
@@ -45,7 +45,7 @@ def print_count_table(Count, maxkey):
                 print(format(int(Count[i][j]),'4d'), end= ' ')
                 print(Style.RESET_ALL, end= '')
             else:
-                print(format(int(Count[i][j]),'4d'), end= ' ')  
+                print(format(int(Count[i][j]),'4d'), end= ' ') 
         print()
     print('maxkey:')
     print('hex ' + hex_str(maxkey[0],4,1) + hex_str(maxkey[1],4,1))
@@ -57,8 +57,7 @@ def print_linear_approximation_table(Approx):
     print(' a ' + '|', end= ' ')
     for h in range(len(Approx[0])):
         print(format(h,'6X'), end= ' ')
-    print()
-    print('----' + '-------'*16)
+    print('\n----' + '-------'*16)
     for i in range(len(Approx)):
         print(format(i,'2X'), '|', end= ' ')
         for j in range(len(Approx[i])):
@@ -68,7 +67,7 @@ def print_linear_approximation_table(Approx):
                 print(Style.RESET_ALL, end= '')
             else:
                 print(format(Approx[i][j],' .3f'), end= ' ')
-        print()
+            print()
 
 def print_difference_distribution_table(N_D_values):
     print('\nDifference distribution table:')
@@ -76,12 +75,11 @@ def print_difference_distribution_table(N_D_values):
     print(' a\'' + '|', end= ' ')
     for h in range(len(N_D_values[0])):
         print(format(h,'2X'), end= ' ')
-    print()
-    print('----' + '---'*16)
+    print('\n----' + '---'*16)
     for i in range(len(N_D_values)):
         print(format(i,'2X'), '|', end= ' ')
         for j in range(len(N_D_values[i])):
-            print(format(N_D_values[i][j],'2d'), end= ' ')
+            print(format(int(N_D_values[i][j]),'2d'), end= ' ')
         print()
 
 def print_s_box(s_box):
@@ -92,6 +90,9 @@ def print_s_box(s_box):
         s_box_in_str += format(s_box[i],'2X')
         s_box_out_str += format(i,'2X')
     print(s_box_in_str + '\n' + s_box_out_str)
+
+def print_R_p(a,b,l=4,m=1):
+    print('R_p( ' + bin_str(a,l,m) + ', ' + bin_str(b,l,m) + ') = ' + str(da.R_p(a,b,l*m)))
 
 if __name__ == '__main__':
     x = 0b00111010100101001101011000111111

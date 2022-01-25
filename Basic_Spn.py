@@ -73,12 +73,12 @@ def encrypt(K, x):
     return do_SPN(x, S_Box, P_Box, Ks)
 
 if __name__ == '__main__':
-    x = 0b0010011010110111
-    K = 0b00111010100101001101011000111111
-    print ('initial plaintext:', format (x,'016b'))
-    print ('encrypted ciphertext:', format (encrypt (K, x),'016b'))
+    x = 0b_0010_0110_1011_0111
+    K = 0b_0011_1010_1001_0100_1101_0110_0011_1111
+    print ('initial plaintext:\t', format (x,'016b'))
+    print ('encrypted ciphertext:\t', format (encrypt (K, x),'016b'))
 
 
 # Output
-# initial plaintext: 0010011010110111
-# encrypted ciphertext: 1011110011010110
+# initial plaintext:       0010011010110111
+# encrypted ciphertext:    1011110011010110

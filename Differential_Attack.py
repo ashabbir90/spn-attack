@@ -1,3 +1,4 @@
+import numpy as np
 import Basic_Spn as spn
 import Console_Outputs as cout
 import Linear_Attack as la
@@ -16,9 +17,7 @@ def N_D(x_prime, y_prime, sbox=spn.S_Box):
     return count
 
 def difference_distribution_table():
-    Count = [0] * 16
-    for i in range(16):
-        Count[i] = [0] * 16
+    Count = np.zeros((16,16))
     for a_prime in range(16):
         for b_prime in range(16):
             Count[a_prime][b_prime] = N_D(a_prime, b_prime)
@@ -30,10 +29,7 @@ def R_p(a_prime, b_prime, m=4, sbox=spn.S_Box):
 
 def differential_attack(T_set, pi_s_inv):
     T = len(T_set)
-
-    Count = [0] * 16
-    for i in range(16):
-        Count[i] = [0] * 16
+    Count = np.zeros((16,16))
 
     right_pairs_count = 0
     for (x,y,x_star,y_star) in T_set:
@@ -79,6 +75,11 @@ if __name__ == '__main__':
     K = 0b_0011_1010_1001_0100_1101_0110_0011_1111
     print('\nKey =', cout.bin_str(K,4,8))
 
+    cout.print_R_p(0b_1011,0b_0010)
+    cout.print_R_p(0b_0100,0b_0110)
+    cout.print_R_p(0b_0010,0b_0101)
+    cout.print_R_p(0b_0010,0b_0101)
+
     cout.print_difference_distribution_table(difference_distribution_table())
 
     x_prime = 0b_0000_1011_0000_0000
@@ -88,13 +89,13 @@ if __name__ == '__main__':
     print('\n=== Starting differential_attack', '==========================')
     start_time = time.time()
     count_table, maxkey, right_pairs_count = differential_attack(tmp_T_set,la.pi_s_inv)
-    
+    print('T =', len(tmp_T_set))
     print('right pairs found:',right_pairs_count)
+    print('pairs filtered out:',len(tmp_T_set) - right_pairs_count)
     cout.print_count_table(count_table, maxkey)
     print('Original key blocks: '
         , format(K,'032b')[20:24]
         , format(K,'032b')[28:32])
-    print('T =', len(tmp_T_set))
     exec_time = time.time() - start_time
     print('Execution time:', f'{exec_time:.2f}', 'seconds')
     print('--- End ----------------------------------------\n')
