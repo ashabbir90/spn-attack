@@ -58,7 +58,7 @@ Die beiden Beispiele für den linearen sowie den differenziellen Angriff konnten
 
 Die im Buch verwendeten Zahlen für $`T`$ (Anzahl benötigter Klartext-Geheimtextpaare) konnte für für beide Attacken bestätigt werden:
 - $`T=8000`$ für den Linearen Angriff
-- $`T_{right\,pairs}=50`$ bis $`100`$ für den Differenziellen Angriff (bei unseren Versuchen haben wir den Eindruck bekommen, dass Werte zwischen $40$ und $80$ ausreichen)
+- $`T_{right\,pairs}=50`$ bis $`100`$ für den Differenziellen Angriff (bei unseren Versuchen haben wir den Eindruck bekommen, dass Werte zwischen $`40`$ und $`80`$ ausreichen)
 
 Mit $`T_{right\,pairs}`$ bezeichnen wir eine Teilmenge aller verwendeten Klartext-Geheimtextpaare, die als "richtigen" Paare für den Differenziellen Angriff gelten. Diese Bedingung ist im vorliegenden Fall erfüllt, falls $`y_{<1>}=(y_{<1>})^*`$ und $`y_{<3>}=(y_{<3>})^*`$ (vlg. [Stinson (2018), S.104](#quelle)). Im Buch wird diese Teilmenge nicht explizit benannt. Bei unserer Implementierung werden die Paare von $`T`$ zufällig erzeugt und gewählt, wodurch wir im Code $`T`$ Werte zwischen $`4000`$ und $`8000`$ verwendet haben. Nach dem Filtern, bleiben so genug "richtige" Paare übrigen, da sie einen ungefähren Anteil von 0.95-1% an allen Klartext-Geheimtextpaaren zu haben scheinen (nicht bewiesen, nur beobachtet).
 
