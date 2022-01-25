@@ -1,5 +1,7 @@
 # spn-attack
 
+Projektmitglieder: Ayesha Shabbir und Leonard König
+
 [ToC]
 
 ## Aufgabenstellung
