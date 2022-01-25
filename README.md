@@ -61,9 +61,6 @@ Mit $`T_{right\,pairs}`$ bezeichnen wir eine Teilmenge aller verwendeten Klartex
 
 Die Zahlen für $`T`$ bei den 3 weiteren Angriffen (`linear_attack_2`, `linear_attack_3` und `linear_attack_4`) entprachen den durch die Schätzfunktion $`T\approx c\epsilon^{-2}`$ Werten, wobei die Konstante $`c`$ zwischen $`6`$ und $`8`$ lag (nahe an dem im Buch gegebenen Wert von $`c\approx 8`$ für den Beispielangriff `linear_attack_1`).
 
-## Quelle
-Stinson, D.R.; Paterson, M.B.: Cryptography - Theory and Practice, CRC Press 2018
-
 ## Bilder
 ### Graphische Darstellungen der implementierten Angriffe
 
@@ -90,3 +87,7 @@ Stinson, D.R.; Paterson, M.B.: Cryptography - Theory and Practice, CRC Press 201
 - `linear_attack_4`
   
   ![linear_attack_4_math.png](images/math/linear_attack_4_math.png)
+
+## Quelle
+
+Stinson, D.R.; Paterson, M.B.: Cryptography - Theory and Practice, CRC Press 2018
