@@ -42,6 +42,7 @@ Zum Testen des Differenziellen Angriffs muss die Datei [`Differential_Attack.py`
   - Implemenierung des diffenenziellen Angriffs aus [Stinson (2018)](#quelle)
   - Berechnung der Menge $`\Delta(x')`$ bestehend aus den geordneten Paaren $`(x,x^*)`$ wobei $`x'=x\oplus x^*`$
   - Berechnung von $`N_D(a',b')`$ sowie der Differenz-Verteilungstabelle
+  - Berechnung von $`R_p(a',b')`$ (nur für 4-Bit Zahlen)
 - [`Console_Outputs.py`](Console_Outputs.py)
   - Funktionen zur Formatierung der Ausgaben in der Konsole
 
