@@ -67,7 +67,7 @@ def print_linear_approximation_table(Approx):
                 print(Style.RESET_ALL, end= '')
             else:
                 print(format(Approx[i][j],' .3f'), end= ' ')
-            print()
+        print()
 
 def print_difference_distribution_table(N_D_values):
     print('\nDifference distribution table:')

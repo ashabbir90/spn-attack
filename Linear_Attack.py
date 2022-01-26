@@ -211,7 +211,7 @@ if __name__ == '__main__':
     K = 0b_0011_1010_1001_0100_1101_0110_0011_1111
     print('\nKey =', cout.bin_str(K,4,8))
 
-    T_set = [(x, spn.encrypt(K, x)) for x in random.sample(range(0, 2**16-1), 20_000)]
+    T_set = [(x, spn.encrypt(K, x)) for x in random.sample(range(0, 2**16), 20_000)]
 
     for i in Attacks:
         print('=== Starting linear_attack_' + str(i), '==========================')
