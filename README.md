@@ -30,7 +30,20 @@ Zum Testen des differenziellen Angriffs muss die Datei [`Differential_Attack.py`
 - [`Console_Outputs.py`](Console_Outputs.py)
   - Funktionen zur Formatierung der Ausgaben in der Konsole
 
+<<<<<<< HEAD
 # Übersichten der implementierten Angriffe
+=======
+## Bilder
+### Graphische Darstellungen der implementierten Angriffe
+
+![](images/networks/linear_attack_1_overview.png)
+![](images/networks/linear_attack_2_overview.png)
+![](images/networks/linear_attack_3_overview.png)
+![](images/networks/linear_attack_4_overview.png)
+![](images/networks/differential_attack_overview.png)
+
+### Berechnung des Bias $`\epsilon`$ für die Linearen Angriffe
+>>>>>>> 3ea09dd1ca1ad19f86b907bcb2b4c1c80e864a66
 
 - `linear_attack_1`
   
