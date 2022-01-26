@@ -1,7 +1,5 @@
 # spn-attack
 
-Projektmitglieder: Ayesha Shabbir und Leonard König
-
 Dieses Projekt implementiert zwei Methoden zur Kryptoanalyse eines Substitutions-Permutations-Netzwerks (SPN) anhand der Beschreibungen von [Stinson u. a. (2018)](#quelle). 
 
 # Verwendung
