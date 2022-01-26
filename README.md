@@ -2,6 +2,8 @@
 
 Dieses Projekt implementiert zwei Methoden zur Kryptoanalyse eines Substitutions-Permutations-Netzwerks (SPN) anhand der Beschreibungen von [Stinson u. a. (2018)](#quelle). 
 
+Projektmitglieder: Ayesha Shabbir und Leonard König
+
 # Verwendung
 
 Dieses Projekt enthält vier Skripte, welche alle separat ausgeführt werden können, solange sie sich im gleichen Ordner befinden. Für die Ausführung der Skripte muss eine `python`-Umgebung installiert sein, welche die Packete `numpy`, `colorama`, `time` und `random` enthält.
