@@ -8,70 +8,57 @@ Dieses Projekt implementiert zwei Methoden zur Kryptoanalyse eines Substitutions
 
 Dieses Projekt enthält vier Skripte, welche alle separat ausgeführt werden können, solange sie sich im gleichen Ordner befinden. Für die Ausführung der Skripte muss eine `python`-Umgebung installiert sein, welche die Packete `numpy`, `colorama`, `time` und `random` enthält.
 
-Zum Testen der linearen Angriffe muss die Datei [`Linear_Attack.py`](Linear_Attack.py) ausgeführt werden. Durch editieren der Variable `Attack` können einzele Angriffe ausgewählt werden. Bsp.:
+Zum Testen der linearen Angriffe muss die Datei [`Linear_Attack.py`](scripts/Linear_Attack.py) ausgeführt werden. Durch editieren der Variable `Attack` können einzele Angriffe ausgewählt werden. Bsp.:
 - `Attacks = [1]`: Nur der von [Stinson u. a. (2018)](#quelle) beschriebene Beispielangriff wird ausgeführt.
 - `Attacks = [1,2,3,4]`: Alle implementierten Angriff werden der Reihe nach ausgeführt (Achtung: Die Angriffe 3-4 können längere Laufzeiten haben [ca. 2-3 min je Angriff])
 
-Zum Testen des differenziellen Angriffs muss die Datei [`Differential_Attack.py`](Differential_Attack.py) ausgeführt werden.
+Zum Testen des differenziellen Angriffs muss die Datei [`Differential_Attack.py`](scripts/Differential_Attack.py) ausgeführt werden.
 
 # Skripte
 
-- [`Basic_SPN.py`](Basic_SPN.py)
+- [`Basic_SPN.py`](scripts/Basic_SPN.py)
   - Implementierung grundlegender Funktionen des Substitutions-Permutations-Netzwerks (Schlüsselgenerierung, S-Box, Bit-Permutation und Verschlüsselung)
-- [`Linear_Attack.py`](Linear_Attack.py)
+- [`Linear_Attack.py`](scripts/Linear_Attack.py)
   - Implementierung 4 linearer Angriffe
   - Berechnung von $`N_L(a,b)`$ sowie der linearen Approximationstabelle
   - Invertierung der S-Box
-- [`Differential_Attack.py`](Differential_Attack.py)
+- [`Differential_Attack.py`](scripts/Differential_Attack.py)
   - Implemenierung des diffenenziellen Angriffs
   - Berechnung der Menge $`\Delta(x')`$ bestehend aus den geordneten Paaren $`(x,x^*)`$ wobei $`x'=x\oplus x^*`$
   - Berechnung von $`N_D(a',b')`$ sowie der Differenz-Verteilungstabelle
   - Berechnung von $`R_p(a',b')`$ (nur für 4-Bit Zahlen)
-- [`Console_Outputs.py`](Console_Outputs.py)
+- [`Console_Outputs.py`](scripts/Console_Outputs.py)
   - Funktionen zur Formatierung der Ausgaben in der Konsole
 
-<<<<<<< HEAD
 # Übersichten der implementierten Angriffe
-=======
-## Bilder
-### Graphische Darstellungen der implementierten Angriffe
-
-![](images/networks/linear_attack_1_overview.png)
-![](images/networks/linear_attack_2_overview.png)
-![](images/networks/linear_attack_3_overview.png)
-![](images/networks/linear_attack_4_overview.png)
-![](images/networks/differential_attack_overview.png)
-
-### Berechnung des Bias $`\epsilon`$ für die Linearen Angriffe
->>>>>>> 3ea09dd1ca1ad19f86b907bcb2b4c1c80e864a66
 
 - `linear_attack_1`
   
-  ![](images/graphs/linear_attack_1_overview.png)
+  ![linear_attack_1_overview.png](images/graphs/linear_attack_1_overview.png)
 
-  ![linear_attack_1_math.png](images/latex/linear_attack_1_bias.png)
+  ![linear_attack_1_bias.png](images/latex/linear_attack_1_bias.png)
 
 - `linear_attack_2`
   
-  ![](images/graphs/linear_attack_2_overview.png)
+  ![linear_attack_2_overview.png](images/graphs/linear_attack_2_overview.png)
 
-  ![linear_attack_2_math.png](images/latex/linear_attack_2_bias.png)
+  ![linear_attack_2_bias.png](images/latex/linear_attack_2_bias.png)
 
 - `linear_attack_3`
   
-  ![](images/graphs/linear_attack_3_overview.png)
+  ![linear_attack_3_overview.png](images/graphs/linear_attack_3_overview.png)
 
-  ![linear_attack_3_math.png](images/latex/linear_attack_3_bias.png)
+  ![linear_attack_3_bias.png](images/latex/linear_attack_3_bias.png)
 
 - `linear_attack_4`
   
-  ![](images/graphs/linear_attack_4_overview.png)
+  ![linear_attack_4_overview.png](images/graphs/linear_attack_4_overview.png)
 
-  ![linear_attack_4_math.png](images/latex/linear_attack_4_bias.png)
+  ![linear_attack_4_bias.png](images/latex/linear_attack_4_bias.png)
 
 - `differencial_attack`
 
-  ![](images/graphs/differential_attack_overview.png)
+  ![differential_attack_overview.png](images/graphs/differential_attack_overview.png)
 
 # Quelle
 
